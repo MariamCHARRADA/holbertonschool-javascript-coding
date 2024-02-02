@@ -2,7 +2,7 @@
 
 const request = require('request');
 const fs = require('fs');
-request.get(process.argv[2], "UTF-8", (error, response, body) => {
+request.get(process.argv[2], 'UTF-8', (error, response, body) => {
   if (error) {
     console.log(error);
   } else {

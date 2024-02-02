@@ -2,13 +2,13 @@
 
 const request = require('request');
 
-request.get(
-    'http://swapi-api.hbtn.io/api/people/18',
+request.get(process.argv[2],
     function (error, response, body) {
         if (error) {
             console.log(error);
         } else {
-            console.log(JSON.parse(body).films.length);
+            const films = JSON.parse(body).results;
+            console.log(films.filter((film) => film.characters.includes('https://swapi-api.hbtn.io/api/people/18/')).length);
         }
     }
 )

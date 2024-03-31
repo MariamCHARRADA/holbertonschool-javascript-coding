@@ -14,14 +14,12 @@ function countStudents(path) {
       fieldCount[field] = (fieldCount[field] || 0) + 1;
     });
     for (const field in fieldCount) {
-      const studentsInField = students.filter(
-        (student) => student[3] === field,
-      );
-      console.log(
-        `Number of students in ${field}: ${
-          fieldCount[field]
-        }. List: ${studentsInField.map((student) => student[0]).join(', ')}`,
-      );
+      if (Object.prototype.hasOwnProperty.call(fieldCount, field)) { // Fix here
+        const studentsInField = students.filter((student) => student[3] === field);
+        console.log(
+          `Number of students in ${field}: ${fieldCount[field]}. List: ${studentsInField.map((student) => student[0]).join(', ')}`,
+        );
+      }
     }
   } catch (err) {
     throw new Error('Cannot load the database');
